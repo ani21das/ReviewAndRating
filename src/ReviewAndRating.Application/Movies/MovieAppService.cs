@@ -36,7 +36,6 @@ namespace ReviewAndRating.Movies
                 Genre = input.Genre,
                 Country = input.Country,
                 Language = input.Language
-                // other properties...
             };
 
             await _movieRepository.InsertAsync(movie);
@@ -69,9 +68,14 @@ namespace ReviewAndRating.Movies
                 Genre = movie.Genre,
                 Country = movie.Country,
                 Language = movie.Language
-                // Other properties...
             };
         }
-        // Other methods for fetching movies...
+        public async Task<ListResultDto<MovieDto>> GetAllMovies()
+        {
+            var movies = await _movieRepository.GetAllListAsync();
+            var movieDtos = ObjectMapper.Map<List<MovieDto>>(movies);
+
+            return new ListResultDto<MovieDto>(movieDtos);
+        }
     }
 }

@@ -15,7 +15,6 @@ namespace ReviewAndRating.Movies
         Task UpdateMovie(UpdateMovieDto input);
         Task DeleteMovie(EntityDto<Guid> input);
         Task<MovieDto> GetMovie(EntityDto<Guid> input);
-        //Task<ListResultDto<MovieDto>> GetAllMovies();
-        //// Other methods for fetching movies...
+        Task<ListResultDto<MovieDto>> GetAllMovies();
     }
 }
